@@ -62,8 +62,21 @@ const Workspace = () => {
         throw new Error(`Backend error: ${errorText}`);
       }
 
+      
       const data = await response.json();
-      setResult(data as ExplanationResult);
+
+      console.log("API Response:", data); // debug
+
+      if (!data.success) {
+        toast({
+          title: "AI Error",
+          description: data.error || "Something went wrong",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setResult(data.data as ExplanationResult); // ✅ FIX
 
     } catch (err: any) {
       console.error("Explain error:", err);
