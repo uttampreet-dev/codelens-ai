@@ -19,9 +19,9 @@ from rag import init_db, retrieve_context
 load_dotenv()
 
 KEEP_AWAKE_URL = "https://4f885503-e5cb-4db5-85ab-3ae7992bd07d-00-2bej0mybq1zq3.riker.replit.dev"
-COOLDOWN_SECONDS = 10
+COOLDOWN_SECONDS = 20
 CACHE_LIMIT = 50
-GEMINI_RETRIES = 2
+GEMINI_RETRIES = 1
 GEMINI_RETRY_DELAY_SECONDS = 2
 
 response_cache = OrderedDict()
@@ -188,6 +188,8 @@ def call_gemini_with_retries(model, prompt: str):
     last_error = None
     for attempt in range(GEMINI_RETRIES + 1):
         try:
+            import time
+            time.sleep(2)
             response = model.generate_content(
                 prompt,
                 generation_config={"response_mime_type": "application/json"},
