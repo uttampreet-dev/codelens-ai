@@ -289,6 +289,8 @@ Return only valid JSON with this exact structure:
         print(f"Gemini returned invalid JSON: {error}")
     except Exception as error:
         print(f"Gemini failed after retries: {error}")
+        if is_rate_limit_error(error):
+             return error_response("AI is currently busy due to high traffic. Please try the default Fibonacci demo code!")
 
     return error_response("AI is currently busy due to high traffic. Please try again in 30–60 seconds.")
 
