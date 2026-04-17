@@ -22,7 +22,7 @@ Experience how CodeLens AI transforms raw code into clear, structured insights i
 
 ### 🎬 Demo
 
-![CodeLens AI Demo](https://s2.ezgif.com/tmp/ezgif-246e93a241cf6550.gif)
+![CodeLens AI Demo](https://github.com/user-attachments/assets/456b3762-6fbc-4024-a50a-a8f0ea87c38e)
 
 ---
 
