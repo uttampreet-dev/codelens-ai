@@ -46,7 +46,7 @@ const LandingPage = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-muted/50 text-sm text-muted-foreground mb-8">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              Powered by AI
+              Structured code intelligence
             </div>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
               Understand any code
@@ -63,7 +63,7 @@ const LandingPage = () => {
               <Button variant="hero-outline" size="lg" onClick={() => {
                 document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
               }}>
-                Learn more
+                Workflow
               </Button>
             </div>
           </motion.div>

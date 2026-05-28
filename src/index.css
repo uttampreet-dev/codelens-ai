@@ -6,79 +6,300 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 92%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 92%;
+    /* =========================
+       CORE PALETTE
+    ========================== */
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 92%;
+    --background: 220 18% 10%;
+    --foreground: 210 18% 92%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 6%;
+    --card: 222 14% 14%;
+    --card-foreground: 210 18% 92%;
 
-    --secondary: 263 70% 50%;
-    --secondary-foreground: 210 40% 98%;
+    --popover: 222 14% 14%;
+    --popover-foreground: 210 18% 92%;
 
-    --muted: 222 30% 14%;
-    --muted-foreground: 215 20% 55%;
+    /* =========================
+       MUTED STEEL BLUE ACCENT
+    ========================== */
 
-    --accent: 263 70% 50%;
-    --accent-foreground: 210 40% 98%;
+    --primary: 214 38% 68%;
+    --primary-foreground: 220 18% 10%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 210 18% 92%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 217 91% 60%;
+    --accent: 214 32% 72%;
+    --accent-foreground: 220 18% 10%;
 
-    --radius: 0.75rem;
+    /* =========================
+       MUTED
+    ========================== */
 
-    --glow-blue: 217 91% 60%;
-    --glow-purple: 263 70% 50%;
-    --surface-elevated: 222 40% 10%;
+    --muted: 220 10% 17%;
+    --muted-foreground: 220 8% 64%;
 
-    --sidebar-background: 222 47% 6%;
-    --sidebar-foreground: 210 40% 92%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 14%;
-    --sidebar-accent-foreground: 210 40% 92%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 217 91% 60%;
+    /* =========================
+       UI
+    ========================== */
+
+    --destructive: 0 72% 56%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
+    --ring: 214 38% 68%;
+
+    --radius: 1rem;
+
+    --surface-elevated: 222 14% 14%;
+
+    /* =========================
+       SIDEBAR
+    ========================== */
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 210 18% 92%;
+
+    --sidebar-primary: 214 38% 68%;
+    --sidebar-primary-foreground: 220 18% 10%;
+
+    --sidebar-accent: 220 10% 18%;
+    --sidebar-accent-foreground: 210 18% 92%;
+
+    --sidebar-border: 220 10% 22%;
+    --sidebar-ring: 214 38% 68%;
   }
 }
 
 @layer base {
+
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
+
+    min-height: 100vh;
+
+    /* =========================
+       PREMIUM BACKGROUND
+    ========================== */
+
+    background:
+      radial-gradient(
+        circle at top,
+        rgba(124,157,201,0.08),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at bottom right,
+        rgba(255,255,255,0.03),
+        transparent 22%
+      ),
+
+      linear-gradient(
+        180deg,
+        #0c0f14 0%,
+        #121720 45%,
+        #171d27 100%
+      );
+
+    background-attachment: fixed;
+
+    color: rgba(255,255,255,0.92);
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.065em;
+  }
+
+  h1 {
+    font-weight: 600;
+    line-height: 0.9;
+  }
+
+  p {
+    color: rgba(255,255,255,0.68);
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
 @layer utilities {
-  .glow-blue {
-    box-shadow: 0 0 20px hsl(var(--glow-blue) / 0.3), 0 0 60px hsl(var(--glow-blue) / 0.1);
-  }
 
-  .glow-purple {
-    box-shadow: 0 0 20px hsl(var(--glow-purple) / 0.3), 0 0 60px hsl(var(--glow-purple) / 0.1);
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
-  }
+  /* =========================
+     PREMIUM CARD STYLE
+  ========================== */
 
   .surface-elevated {
-    @apply bg-[hsl(var(--surface-elevated))] border border-border;
+
+    background:
+      linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0.035),
+        rgba(124,157,201,0.025)
+      );
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.03) inset,
+      0 25px 50px rgba(0,0,0,0.38);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
+  .surface-elevated:hover {
+
+    border-color:
+      rgba(124,157,201,0.16);
+
+    transform:
+      translateY(-2px);
+
+    box-shadow:
+      0 30px 60px rgba(0,0,0,0.42);
+  }
+
+  /* =========================
+     GLASS
+  ========================== */
+
   .glass {
-    @apply bg-[hsl(var(--surface-elevated)/0.8)] backdrop-blur-xl border border-border/50;
+
+    background:
+      rgba(255,255,255,0.025);
+
+    border:
+      1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter:
+      blur(12px);
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  /* =========================
+     PRIMARY BUTTON
+  ========================== */
+
+  .button-primary {
+
+    background:
+      linear-gradient(
+        135deg,
+        #8aa9d6,
+        #6f8fb9
+      );
+
+    color:
+      #0f172a;
+
+    box-shadow:
+      0 10px 30px rgba(124,157,201,0.22);
+
+    transition:
+      all 0.2s ease;
+  }
+
+  .button-primary:hover {
+
+    transform:
+      translateY(-1px);
+
+    box-shadow:
+      0 16px 34px rgba(124,157,201,0.28);
+
+    filter:
+      brightness(1.03);
+  }
+
+  /* =========================
+     TEXT GRADIENT
+  ========================== */
+
+  .text-gradient {
+
+    background:
+      linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #d7e3f4 40%,
+        #8aa9d6 100%
+      );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* =========================
+     CODE PANEL
+  ========================== */
+
+  .code-surface {
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(14,18,26,0.98),
+        rgba(18,24,34,0.98)
+      );
+
+    border:
+      1px solid rgba(255,255,255,0.06);
+
+    box-shadow:
+      0 25px 50px rgba(0,0,0,0.4);
+  }
+
+  /* =========================
+     SOFT BORDER
+  ========================== */
+
+  .border-soft {
+    border-color: rgba(255,255,255,0.06);
+  }
+
+  /* =========================
+     MUTED PANEL
+  ========================== */
+
+  .panel-muted {
+    background: rgba(255,255,255,0.018);
+  }
+
+  /* =========================
+     ACTIVE PILL / TAG
+  ========================== */
+
+  .pill-active {
+
+    background:
+      rgba(124,157,201,0.12);
+
+    border:
+      1px solid rgba(124,157,201,0.2);
+
+    color:
+      #cfe0f5;
   }
 }
